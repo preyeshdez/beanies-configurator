@@ -3,7 +3,7 @@ const path = require("path");
 const crypto = require("crypto");
 
 const Configuration =
-    require("../models/Configuration");
+    require("../models/configuration");
 
 exports.createConfiguration =
     async (req, res) => {

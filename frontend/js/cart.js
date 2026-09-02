@@ -51,7 +51,7 @@ if (cart.length === 0) {
 
         <img
           class="cart-preview"
-          src="http://localhost:3000${item.previewUrl}"
+          src="${getPreviewUrl(item.previewUrl)}"
           alt="${item.productName}"
         >
 
@@ -173,4 +173,20 @@ document.addEventListener(
 
   }
 );
+
+function getPreviewUrl(previewUrl) {
+
+  if (!previewUrl) {
+    return "";
+  }
+
+  if (
+    previewUrl.startsWith("http://") ||
+    previewUrl.startsWith("https://")
+  ) {
+    return previewUrl;
+  }
+
+  return `http://localhost:3000${previewUrl}`;
+}
 

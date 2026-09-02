@@ -32,7 +32,7 @@ router.get("/test", (req, res) => {
 });
 
 const Configuration =
-    require("../models/Configuration");
+    require("../models/configuration");
 
 router.get("/", async (req, res) => {
 

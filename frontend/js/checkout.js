@@ -97,7 +97,7 @@ cart.forEach(item => {
 
     <img
       class="checkout-preview"
-      src="http://localhost:3000${item.previewUrl}"
+      src="${getPreviewUrl(item.previewUrl)}"
       alt="${item.productName}"
     >
 
@@ -297,3 +297,19 @@ checkoutForm.addEventListener(
 
   }
 );
+
+function getPreviewUrl(previewUrl) {
+
+  if (!previewUrl) {
+    return "";
+  }
+
+  if (
+    previewUrl.startsWith("http://") ||
+    previewUrl.startsWith("https://")
+  ) {
+    return previewUrl;
+  }
+
+  return `http://localhost:3000${previewUrl}`;
+}

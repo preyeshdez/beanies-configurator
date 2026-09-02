@@ -95,9 +95,9 @@ function renderOrder(order) {
       <div class="checkout-item">
 
         <img
-          class="checkout-preview"
-          src="http://localhost:3000${item.preview_url}"
-          alt="${item.product_name}"
+            class="checkout-preview"
+            src="${getPreviewUrl(item.preview_url)}"
+            alt="${item.product_name}"
         >
 
         <div>
@@ -192,4 +192,20 @@ function renderOrder(order) {
 
   `;
 
+}
+
+function getPreviewUrl(previewUrl) {
+
+  if (!previewUrl) {
+    return "";
+  }
+
+  if (
+    previewUrl.startsWith("http://") ||
+    previewUrl.startsWith("https://")
+  ) {
+    return previewUrl;
+  }
+
+  return `http://localhost:3000${previewUrl}`;
 }

@@ -1,6 +1,5 @@
-const fs = require("fs");
-const path = require("path");
 const crypto = require("crypto");
+const { put } = require("@vercel/blob");
 
 const Configuration =
     require("../models/configuration");
@@ -16,6 +15,9 @@ exports.createConfiguration =
                 previewImage
             } = req.body;
 
+
+            // GENERAR HASH ÚNICO
+
             const hash =
                 crypto
                     .createHash("sha256")
@@ -26,6 +28,9 @@ exports.createConfiguration =
                         })
                     )
                     .digest("hex");
+
+
+            // VERIFICAR SI YA EXISTE
 
             const existing =
                 await Configuration.findOne({
@@ -38,15 +43,8 @@ exports.createConfiguration =
 
             }
 
-            const fileName =
-                `${hash}.webp`;
 
-            const filePath =
-                path.join(
-                    __dirname,
-                    "../previews",
-                    fileName
-                );
+            // CONVERTIR BASE64 A BUFFER
 
             const base64Data =
                 previewImage.replace(
@@ -54,13 +52,28 @@ exports.createConfiguration =
                     ""
                 );
 
-            fs.writeFileSync(
-                filePath,
+            const buffer =
                 Buffer.from(
                     base64Data,
                     "base64"
-                )
-            );
+                );
+
+
+            // GUARDAR PREVIEW EN VERCEL BLOB
+
+            const blob =
+                await put(
+                    `previews/${hash}.webp`,
+                    buffer,
+                    {
+                        access: "public",
+                        contentType: "image/webp",
+                        addRandomSuffix: false
+                    }
+                );
+
+
+            // GUARDAR CONFIGURACIÓN EN MONGODB
 
             const configuration =
                 await Configuration.create({
@@ -72,17 +85,22 @@ exports.createConfiguration =
                     colors,
 
                     previewUrl:
-                        `/previews/${fileName}`
+                        blob.url
 
                 });
+
 
             res.status(201).json(
                 configuration
             );
 
+
         } catch (error) {
 
-            console.error(error);
+            console.error(
+                "Error creando configuración:",
+                error
+            );
 
             res.status(500).json({
                 error:
@@ -92,6 +110,7 @@ exports.createConfiguration =
         }
 
     };
+
 
 exports.getConfiguration =
     async (req, res) => {

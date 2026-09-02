@@ -4,20 +4,29 @@ require("dotenv").config({
 
 const express = require("express");
 const cors = require("cors");
+
 const pool = require("./config/database");
 const orderRoutes = require("./routes/orderRoutes");
 
-const app =
-    express();
+const app = express();
+
+
+// MIDDLEWARES
 
 app.use(cors());
 
 app.use(express.json());
 
+
+// RUTAS API
+
 app.use(
-  "/api/orders",
-  orderRoutes
+    "/api/orders",
+    orderRoutes
 );
+
+
+// RUTA PRINCIPAL / PRUEBA DE POSTGRESQL
 
 app.get(
     "/",
@@ -54,16 +63,28 @@ app.get(
     }
 );
 
-const PORT =
-    process.env.PORT || 4000;
 
-app.listen(
-    PORT,
-    () => {
+// SERVIDOR LOCAL
 
-        console.log(
-            `Ecommerce API en puerto ${PORT}`
-        );
+if (require.main === module) {
 
-    }
-);
+    const PORT =
+        process.env.PORT || 4000;
+
+    app.listen(
+        PORT,
+        () => {
+
+            console.log(
+                `Ecommerce API en puerto ${PORT}`
+            );
+
+        }
+    );
+
+}
+
+
+// VERCEL
+
+module.exports = app;

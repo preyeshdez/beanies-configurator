@@ -1,43 +1,17 @@
 {
   "name": "beanies",
   "version": "1.0.0",
-  "description": "",
-  "main": "configurator-api/server.js",
+  "private": true,
+  "description": "Prototipo de configurador web de beanies personalizados para ecommerce",
   "scripts": {
-
-    "configurator":
-      "node configurator-api/server.js",
-
-    "configurator:dev":
-      "nodemon configurator-api/server.js",
-
-    "ecommerce":
-      "node ecommerce-api/server.js",
-
-    "ecommerce:dev":
-      "nodemon ecommerce-api/server.js",
-
-    "dev": "concurrently -n CONFIG,ECOM -c blue,green \"npm run configurator:dev\" \"npm run ecommerce:dev\"",
-
-    "seed:templates":
-      "node configurator-api/scripts/seedTemplates.js",
-
-    "seed:colors":
-      "node configurator-api/scripts/seedColors.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.6",
-    "crypto": "^1.0.1",
-    "dotenv": "^17.4.2",
-    "express": "^5.2.1",
-    "mongoose": "^9.6.3",
-    "pg": "^8.21.0"
+    "install:all": "npm install --prefix configurator-api && npm install --prefix ecommerce-api",
+    "configurator": "npm --prefix configurator-api start",
+    "ecommerce": "npm --prefix ecommerce-api start",
+    "dev": "concurrently -n CONFIG,ECOM -c blue,green \"npm run configurator\" \"npm run ecommerce\"",
+    "seed:templates": "npm --prefix configurator-api run seed:templates",
+    "seed:colors": "npm --prefix configurator-api run seed:colors"
   },
   "devDependencies": {
-    "concurrently": "^10.0.1",
-    "nodemon": "^3.1.14"
+    "concurrently": "^10.0.1"
   }
 }

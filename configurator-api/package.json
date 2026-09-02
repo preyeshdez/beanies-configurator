@@ -5,7 +5,9 @@
   "main": "server.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed:templates": "node scripts/seedTemplates.js",
+    "seed:colors": "node scripts/seedColors.js"
   },
   "dependencies": {
     "@vercel/blob": "^2.8.0",

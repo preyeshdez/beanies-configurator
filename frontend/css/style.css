@@ -1,0 +1,717 @@
+/* =====================================
+   RESET / GLOBAL
+===================================== */
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+
+  font-family:Arial, Helvetica, sans-serif;
+
+  margin:0;
+
+  padding:40px;
+
+  background:#f5f5f5;
+
+  color:#111;
+
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+}
+
+h1,h2,h3{
+  margin-top:0;
+}
+
+a{
+  color:inherit;
+}
+
+
+/* =====================================
+   SHOP PAGE
+===================================== */
+
+.products-grid{
+
+  width:100%;
+
+  max-width:1200px;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fill,minmax(260px,1fr));
+
+  gap:24px;
+
+  margin-top:30px;
+}
+
+.product-card{
+
+  background:white;
+
+  border:1px solid #ddd;
+
+  border-radius:12px;
+
+  overflow:hidden;
+
+  transition:0.2s;
+
+  justify-self:center;
+
+  width:100%;
+
+  max-width:280px;
+}
+
+.product-card:hover{
+
+  transform:translateY(-4px);
+}
+
+.product-card img{
+
+  width:100%;
+
+  height:260px;
+
+  object-fit:contain;
+
+  display:block;
+
+  background:white;
+
+  padding:16px;
+}
+
+.product-info{
+
+  padding:20px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:12px;
+
+  align-items:center;
+}
+
+.product-info h2{
+
+  margin:0;
+
+  text-align:center;
+
+  font-size:20px;
+}
+
+.product-price{
+
+  font-size:22px;
+
+  font-weight:bold;
+}
+
+.customize-button{
+
+  width:100%;
+
+  text-align:center;
+
+  padding:12px;
+
+  border-radius:10px;
+
+  background:black;
+
+  color:white;
+
+  text-decoration:none;
+
+  transition:0.2s;
+}
+
+.customize-button:hover{
+
+  opacity:0.92;
+}
+
+.cart-button{
+
+  width:20%;
+
+  text-align:center;
+
+  padding:12px;
+
+  border-radius:10px;
+
+  background:rgb(185, 60, 185);
+
+  color:rgb(255, 255, 255);
+
+  text-decoration:none;
+
+  transition:0.2s;
+}
+
+.cart-button:hover{
+
+  background: rgb(114, 25, 107);
+}
+
+/* =====================================
+   PRODUCT PAGE
+===================================== */
+
+.back-link{
+
+  display:inline-block;
+
+  margin-bottom:20px;
+
+  text-decoration:none;
+
+  color:black;
+
+  align-self:flex-start;
+}
+
+.product-layout{
+
+  width:100%;
+
+  max-width:1400px;
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 380px;
+
+  gap:40px;
+
+  align-items:start;
+
+  margin-top:20px;
+}
+
+
+/* =====================================
+   CONFIG PANEL
+===================================== */
+
+.config-panel{
+
+  background:white;
+
+  padding:24px;
+
+  border-radius:16px;
+
+  border:1px solid #ddd;
+
+  width:100%;
+
+  max-width:380px;
+}
+
+#controls{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:20px;
+
+  margin-top:20px;
+}
+
+.control-group{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:8px;
+}
+
+.control-group label{
+
+  font-size:14px;
+
+  font-weight:600;
+
+  margin-top: 10px;
+}
+
+.control-group select, .control-group input{
+
+  padding:12px;
+
+  border-radius:10px;
+
+  border:1px solid #ccc;
+
+  font-size:15px;
+
+  background:white;
+
+  width:100%;
+}
+
+
+/* =====================================
+   CANVAS
+===================================== */
+
+.canvas-container{
+
+  background:white;
+
+  border-radius:16px;
+
+  border:1px solid #ddd;
+
+  padding:20px;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  max-width:620px;
+
+  width:100%;
+
+  margin:auto;
+}
+
+canvas{
+
+  width:100%;
+
+  max-width:520px;
+
+  height:auto;
+
+  display:block;
+
+  margin:auto;
+}
+
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+.buy-container{
+
+  margin-top:30px;
+}
+
+button{
+
+  width:100%;
+
+  padding:14px;
+
+  border:none;
+
+  border-radius:12px;
+
+  background:black;
+
+  color:white;
+
+  font-size:16px;
+
+  cursor:pointer;
+}
+
+button:hover{
+
+  opacity:0.92;
+}
+
+
+/* =====================================
+   ORDER PAGE
+===================================== */
+
+.order-card{
+
+  background:white;
+
+  border:1px solid #ddd;
+
+  border-radius:16px;
+
+  padding:24px;
+
+  width:100%;
+
+  max-width:700px;
+}
+
+#orderImage{
+
+  width:100%;
+
+  border-radius:12px;
+
+  margin-top:20px;
+
+  border:1px solid #ddd;
+}
+
+#orderColors{
+
+  margin-top:20px;
+}
+
+.color-line{
+
+  margin-bottom:10px;
+}
+
+
+/* =====================================
+   CART PAGE
+===================================== */
+
+.cart-container{
+
+  width:100%;
+
+  max-width:1200px;
+}
+
+.cart-table{
+
+  width:100%;
+
+  background:white;
+
+  border:1px solid #ddd;
+
+  border-radius:16px;
+
+  overflow:hidden;
+
+  border-collapse:collapse;
+}
+
+.cart-table thead{
+
+  background:#f8f8f8;
+}
+
+.cart-table th{
+
+  padding:18px;
+
+  text-align:left;
+
+  font-size:14px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.5px;
+}
+
+.cart-table td{
+
+  padding:16px;
+
+  border-top:1px solid #eee;
+
+  vertical-align:middle;
+}
+
+.cart-preview{
+
+  width:80px;
+
+  height:80px;
+
+  object-fit:contain;
+
+  display:block;
+
+  background:white;
+
+  border:1px solid #ddd;
+
+  border-radius:8px;
+}
+
+.remove-button{
+
+  width:auto;
+
+  padding:8px 14px;
+
+  background:#dc3545;
+
+  border:none;
+
+  border-radius:8px;
+
+  color:white;
+
+  cursor:pointer;
+
+  font-size:14px;
+}
+
+.remove-button:hover{
+
+  opacity:.9;
+}
+
+.cart-summary{
+
+  margin-top:24px;
+
+  margin-left:auto;
+
+  width:360px;
+
+  background:white;
+
+  border:1px solid #ddd;
+
+  border-radius:16px;
+
+  padding:24px;
+}
+
+.cart-row{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-bottom:14px;
+
+  font-size:18px;
+}
+
+.cart-total{
+
+  border-top:1px solid #ddd;
+
+  padding-top:16px;
+
+  margin-top:16px;
+
+  font-size:24px;
+
+  font-weight:bold;
+}
+
+#checkoutButton{
+
+  margin-top:20px;
+
+  width:100%;
+}
+
+
+/* =====================================
+   CHECKOUT PAGE
+===================================== */
+
+.checkout-layout{
+
+  width:100%;
+
+  max-width:1200px;
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 400px;
+
+  gap:24px;
+
+  align-items:start;
+
+}
+
+.checkout-card{
+
+  background:white;
+
+  border:1px solid #ddd;
+
+  border-radius:16px;
+
+  padding:24px;
+
+}
+
+.checkout-card form{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:18px;
+
+}
+
+.checkout-card .control-group{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:8px;
+
+}
+
+.checkout-card input,
+.checkout-card textarea{
+
+  width:100%;
+
+  padding:12px;
+
+  border:1px solid #ccc;
+
+  border-radius:10px;
+
+  font-size:15px;
+
+  font-family:inherit;
+
+  background:white;
+
+}
+
+.checkout-card textarea{
+
+  resize:vertical;
+
+  min-height:110px;
+
+}
+
+.checkout-card input:focus,
+.checkout-card textarea:focus{
+
+  outline:none;
+
+  border-color:#666;
+
+}
+
+.checkout-card button{
+
+  width:auto;
+
+  min-width:220px;
+
+  align-self:flex-start;
+
+}
+
+.checkout-summary{
+
+  background:white;
+
+  border:1px solid #ddd;
+
+  border-radius:16px;
+
+  padding:24px;
+
+}
+
+.checkout-item{
+
+  display:flex;
+
+  gap:12px;
+
+  margin-bottom:16px;
+
+  padding-bottom:16px;
+
+  border-bottom:1px solid #eee;
+
+}
+
+.checkout-preview{
+
+  width:80px;
+
+  height:80px;
+
+  object-fit:contain;
+
+  flex-shrink:0;
+
+}
+
+.checkout-total{
+
+  margin-top:20px;
+
+  padding-top:20px;
+
+  border-top:1px solid #ddd;
+
+  font-size:24px;
+
+  font-weight:700;
+
+}
+
+/* =====================================
+   SUCCESS PAGE
+===================================== */
+
+.success-button{
+
+  display:block;
+
+  margin-top:24px;
+
+  width: 40%;
+
+  text-align:center;
+
+  padding:14px;
+
+  border-radius:12px;
+
+  background:black;
+
+  color:white;
+
+  text-decoration:none;
+
+  transition:.2s;
+
+}
+
+.success-button:hover{
+
+  opacity:.92;
+
+}

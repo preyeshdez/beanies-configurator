@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Checkout</title>
+
+  <link
+    rel="stylesheet"
+    href="css/style.css"
+  >
+
+</head>
+
+<body>
+
+  <a
+    href="cart.html"
+    class="back-link"
+  >
+    ← Volver al carrito
+  </a>
+
+  <div class="checkout-layout">
+
+    <!-- FORMULARIO -->
+
+    <div class="checkout-card">
+
+      <h1>Datos de compra</h1>
+
+      <form id="checkoutForm">
+
+        <div class="control-group">
+
+          <label>
+            Nombre
+          </label>
+
+          <input
+            id="customerName"
+            type="text"
+            required
+          >
+
+        </div>
+
+        <div class="control-group">
+
+          <label>
+            Email
+          </label>
+
+          <input
+            id="customerEmail"
+            type="email"
+            required
+          >
+
+        </div>
+
+        <div class="control-group">
+
+          <label>
+            Teléfono
+          </label>
+
+          <input
+            id="customerPhone"
+            type="text"
+            required
+          >
+
+        </div>
+
+        <div class="control-group">
+
+          <label>
+            Dirección
+          </label>
+
+          <textarea
+            id="customerAddress"
+            rows="4"
+            required
+          ></textarea>
+
+        </div>
+
+        <button type="submit">
+
+          Comprar
+
+        </button>
+
+      </form>
+
+    </div>
+
+    <!-- RESUMEN -->
+
+    <div class="checkout-summary">
+
+      <h2>
+        Resumen del pedido
+      </h2>
+
+      <div id="checkoutItems"></div>
+
+      <div id="checkoutTotal"></div>
+
+    </div>
+
+  </div>
+
+  <script src="js/products.js"></script>
+
+  <script src="js/checkout.js"></script>
+
+</body>
+
+</html>

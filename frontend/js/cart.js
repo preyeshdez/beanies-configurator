@@ -187,6 +187,6 @@ function getPreviewUrl(previewUrl) {
     return previewUrl;
   }
 
-  return `http://localhost:3000${previewUrl}`;
+  return `${CONFIGURATOR_API_URL}${previewUrl}`;
 }
 

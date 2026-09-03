@@ -95,28 +95,4 @@ if (require.main === module) {
 
 // VERCEL
 
-app.get("/debug/vercel", (req, res) => {
-
-  res.json({
-
-    mongoUri:
-      Boolean(process.env.MONGO_URI),
-
-    blobStoreId:
-      Boolean(process.env.BLOB_STORE_ID),
-
-    blobReadWriteToken:
-      Boolean(process.env.BLOB_READ_WRITE_TOKEN),
-
-    oidcHeader:
-      Boolean(
-        req.headers[
-          "x-vercel-oidc-token"
-        ]
-      )
-
-  });
-
-});
-
 module.exports = app;

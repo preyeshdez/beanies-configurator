@@ -72,7 +72,7 @@ async function loadColors() {
   try {
 
     const response = await fetch(
-      "http://localhost:3000/api/colors"
+      `${CONFIGURATOR_API_URL}/api/colors`
     );
 
     availableColors =
@@ -94,7 +94,7 @@ async function loadTemplate(slug) {
   try {
 
     const response = await fetch(
-      `http://localhost:3000/api/templates/${slug}`
+      `${CONFIGURATOR_API_URL}/api/templates/${slug}`
     );
 
     if (!response.ok) {
@@ -280,7 +280,7 @@ async function init() {
   images.base.crossOrigin = "anonymous";
 
   images.base.src =
-    `http://localhost:3000${currentModel.baseImage}`;
+    `${CONFIGURATOR_API_URL}${currentModel.baseImage}`;
 
 
   // =====================================
@@ -294,7 +294,7 @@ async function init() {
     img.crossOrigin = "anonymous";
 
     img.src =
-      `http://localhost:3000${zone.mask}`;
+      `${CONFIGURATOR_API_URL}${zone.mask}`;
 
     images.masks[zone.id] = img;
 
@@ -531,7 +531,7 @@ addToCartButton.addEventListener(
 
       const response =
         await fetch(
-          "http://localhost:3000/api/configurations",
+          `${CONFIGURATOR_API_URL}/api/configurations`,
           {
             method: "POST",
 

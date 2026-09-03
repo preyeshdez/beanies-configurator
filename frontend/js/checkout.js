@@ -238,7 +238,7 @@ checkoutForm.addEventListener(
 
       const response =
         await fetch(
-          "http://localhost:4000/api/orders",
+         `${ECOMMERCE_API_URL}/api/orders`,
           {
 
             method: "POST",
@@ -311,5 +311,5 @@ function getPreviewUrl(previewUrl) {
     return previewUrl;
   }
 
-  return `http://localhost:3000${previewUrl}`;
+  return `${CONFIGURATOR_API_URL}${previewUrl}`;
 }

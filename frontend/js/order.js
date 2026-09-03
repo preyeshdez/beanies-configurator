@@ -1,53 +1,53 @@
 const params =
-    new URLSearchParams(
-        window.location.search
-    );
+  new URLSearchParams(
+    window.location.search
+  );
 
 const orderId =
-    params.get("id");
+  params.get("id");
 
 const orderNumber =
-    document.getElementById(
-        "orderNumber"
-    );
+  document.getElementById(
+    "orderNumber"
+  );
 
 const orderInfo =
-    document.getElementById(
-        "orderInfo"
-    );
+  document.getElementById(
+    "orderInfo"
+  );
 
 loadOrder();
 
 async function loadOrder() {
 
-    try {
+  try {
 
-        const response =
-            await fetch(
-                `http://localhost:4000/api/orders/${orderId}`
-            );
+    const response =
+      await fetch(
+        `${ECOMMERCE_API_URL}/api/orders/${orderId}`
+      );
 
-        if (!response.ok) {
+    if (!response.ok) {
 
-            throw new Error(
-                "Orden no encontrada"
-            );
+      throw new Error(
+        "Orden no encontrada"
+      );
 
-        }
+    }
 
-        const order =
-            await response.json();
+    const order =
+      await response.json();
 
-        orderNumber.textContent =
-            `#${order.id}`;
+    orderNumber.textContent =
+      `#${order.id}`;
 
-        renderOrder(order);
+    renderOrder(order);
 
-    } catch (error) {
+  } catch (error) {
 
-        console.error(error);
+    console.error(error);
 
-        orderInfo.innerHTML = `
+    orderInfo.innerHTML = `
 
       <p>
 
@@ -58,22 +58,22 @@ async function loadOrder() {
 
     `;
 
-    }
+  }
 
 }
 
 function renderOrder(order) {
 
-    let itemsHtml = "";
+  let itemsHtml = "";
 
-    order.items.forEach(item => {
+  order.items.forEach(item => {
 
-        const colors =
-            item.colors || {};
+    const colors =
+      item.colors || {};
 
-        const colorsHtml =
-            Object.entries(colors)
-                .map(([zone, color]) => `
+    const colorsHtml =
+      Object.entries(colors)
+        .map(([zone, color]) => `
 
                 <div>
 
@@ -88,9 +88,9 @@ function renderOrder(order) {
                 </div>
 
                 `)
-                .join("");
+        .join("");
 
-        itemsHtml += `
+    itemsHtml += `
 
       <div class="checkout-item">
 
@@ -123,10 +123,10 @@ function renderOrder(order) {
           Subtotal:
 
           $${Number(
-            item.subtotal
-        ).toLocaleString(
-            "es-CL"
-        )}
+      item.subtotal
+    ).toLocaleString(
+      "es-CL"
+    )}
 
           <br><br>
 
@@ -142,9 +142,9 @@ function renderOrder(order) {
 
     `;
 
-    });
+  });
 
-    orderInfo.innerHTML = `
+  orderInfo.innerHTML = `
 
     <h3>
 
@@ -183,10 +183,10 @@ function renderOrder(order) {
       Total:
 
       $${Number(
-        order.total
-    ).toLocaleString(
-        "es-CL"
-    )}
+    order.total
+  ).toLocaleString(
+    "es-CL"
+  )}
 
     </div>
 
@@ -207,5 +207,5 @@ function getPreviewUrl(previewUrl) {
     return previewUrl;
   }
 
-  return `http://localhost:3000${previewUrl}`;
+  return `${CONFIGURATOR_API_URL}${previewUrl}`;
 }

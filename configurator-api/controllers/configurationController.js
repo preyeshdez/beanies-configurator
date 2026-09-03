@@ -61,15 +61,43 @@ exports.createConfiguration =
 
             // GUARDAR PREVIEW EN VERCEL BLOB
 
+            const oidcToken =
+                req.headers[
+                "x-vercel-oidc-token"
+                ];
+
+            const blobOptions = {
+
+                access: "public",
+
+                contentType: "image/webp",
+
+                addRandomSuffix: false
+
+            };
+
+
+            // EN VERCEL UTILIZAR OIDC
+
+            if (
+                oidcToken &&
+                process.env.BLOB_STORE_ID
+            ) {
+
+                blobOptions.oidcToken =
+                    oidcToken;
+
+                blobOptions.storeId =
+                    process.env.BLOB_STORE_ID;
+
+            }
+
+
             const blob =
                 await put(
                     `previews/${hash}.webp`,
                     buffer,
-                    {
-                        access: "public",
-                        contentType: "image/webp",
-                        addRandomSuffix: false
-                    }
+                    blobOptions
                 );
 
 
